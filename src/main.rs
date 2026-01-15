@@ -1,9 +1,14 @@
 mod lexer;
 mod parser;
-use lexer::{Token, lex};
+
+use lexer::lex;
+use parser::parse;
 
 fn main() {
-    let code = r#"v name = "hello"!"#;
+    let code = "v x = 5!";
     let tokens = lex(code);
-    println!("{:?}", tokens);
+    println!("Tokens: {:?}", tokens);
+    
+    let ast = parse(tokens);
+    println!("AST: {:?}", ast);
 }
